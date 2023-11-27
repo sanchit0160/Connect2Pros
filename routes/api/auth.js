@@ -36,8 +36,8 @@ router.get('/', auth, async (req, res) => {
  */
 
 router.post('/', [
-  check('email', 'Email is Invalid').isEmail(),
-  check('password', 'Password is Required').exists(),
+  check('email', 'Invalid: Email').isEmail(),
+  check('password', 'Password: Required').exists(),
 
 ], async (req, res) => {
   const errors = validationResult(req);
@@ -53,13 +53,13 @@ router.post('/', [
     console.log(user);
 
     if (!user) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+      return res.status(400).json({ errors: [{ msg: 'Invalid: Credentials' }] });
     }
 
     const IsMatch = await bcrypt.compare(password, user.password);
 
     if(!IsMatch) {
-      return res.status(400).json({ errors: [{ msg: 'Invalid Credentials' }] });
+      return res.status(400).json({ errors: [{ msg: 'Invalid: Credentials' }] });
     }
 
     // Return JWT

@@ -39,8 +39,8 @@ router.post(
   '/',
   auth,
   [
-    check('status', 'Status is required').notEmpty(),
-    check('skills', 'Skills is required').notEmpty()
+    check('status', 'Status: Required').notEmpty(),
+    check('skills', 'Skills: Required').notEmpty()
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -195,13 +195,13 @@ router.put(
   [
     auth, 
     [
-      check('title', 'Title is Required')
+      check('title', 'Title: Required')
       .not()
       .isEmpty(),
-      check('company', 'Company is Required')
+      check('company', 'Company: Required')
       .not()
       .isEmpty(),
-      check('from', 'From data is Required')
+      check('from', 'From Data: Required')
       .not()
       .isEmpty(),
     ]
@@ -283,13 +283,13 @@ router.put(
   [
     auth, 
     [
-      check('school', 'School is Required')
+      check('school', 'School: Required')
       .not()
       .isEmpty(),
-      check('degree', 'Degree is Required')
+      check('degree', 'Degree: Required')
       .not()
       .isEmpty(),
-      check('fieldOfStudy', 'Field of Study is Required')
+      check('fieldOfStudy', 'Field of Study: Required')
       .not()
       .isEmpty(),
     ]

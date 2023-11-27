@@ -18,7 +18,7 @@ router.post(
   [
     auth,
     [
-      check('text', 'Text is required').not().isEmpty()
+      check('text', 'Text: Required').not().isEmpty()
     ]
   ],
   async (req, res) => {
@@ -113,7 +113,7 @@ router.delete(
 
       // Check User
       if(post.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: 'User not authorized' });
+        return res.status(401).json({ msg: 'User Unauthorized' });
       }
 
       await post.deleteOne({ _id: req.params.id });
@@ -213,7 +213,7 @@ router.post(
   [
     auth,
     [
-      check('text', 'Text is required').not().isEmpty()
+      check('text', 'Text: Required').not().isEmpty()
     ]
   ],
   async (req, res) => {
@@ -265,7 +265,7 @@ router.delete(
 
       // Check User
       if(comment.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: 'User not authorized' });
+        return res.status(401).json({ msg: 'User Unauthorized' });
       }
 
       // Get remove index

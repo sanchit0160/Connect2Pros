@@ -195,13 +195,13 @@ router.put(
   [
     auth, 
     [
-      check('title', 'Title is required')
+      check('title', 'Title is Required')
       .not()
       .isEmpty(),
-      check('company', 'Company is required')
+      check('company', 'Company is Required')
       .not()
       .isEmpty(),
-      check('from', 'From data is required')
+      check('from', 'From data is Required')
       .not()
       .isEmpty(),
     ]
@@ -283,13 +283,13 @@ router.put(
   [
     auth, 
     [
-      check('school', 'School is required')
+      check('school', 'School is Required')
       .not()
       .isEmpty(),
-      check('degree', 'Degree is required')
+      check('degree', 'Degree is Required')
       .not()
       .isEmpty(),
-      check('fieldOfStudy', 'fieldOfStudy is required')
+      check('fieldOfStudy', 'Field of Study is Required')
       .not()
       .isEmpty(),
     ]

@@ -1,7 +1,7 @@
 {
-  "name": "devconnector",
+  "name": "Connect2Pros",
   "version": "1.0.0",
-  "description": "Social network for developers",
+  "description": "Social network for professionals",
   "main": "server.js",
   "scripts": {
     "start": "node server",

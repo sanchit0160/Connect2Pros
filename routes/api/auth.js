@@ -36,8 +36,8 @@ router.get('/', auth, async (req, res) => {
  */
 
 router.post('/', [
-  check('email', 'Email is invalid').isEmail(),
-  check('password', 'Password is required').exists(),
+  check('email', 'Email is Invalid').isEmail(),
+  check('password', 'Password is Required').exists(),
 
 ], async (req, res) => {
   const errors = validationResult(req);

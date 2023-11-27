@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
         <title>node.js Server</title>
       </head>
       <body>
-        <h1>connect2pros server is running</h1>
+        <h1>Connect2Pros server is running</h1>
       </body>
     </html>
   `);

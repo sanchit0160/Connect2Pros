@@ -16,7 +16,7 @@ const User = require('../../models/User');
 router.post('/', [
   check('name', 'Name: Required').not().notEmpty(),
   check('email', 'Invalid: Email').isEmail(),
-  check('password', 'Password should contain 6 or more characters').isLength({ min: 6 })
+  check('password', 'Password Length: Should be more than 6 Characters').isLength({ min: 6 })
 ], async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -29,7 +29,7 @@ router.post('/', [
     // See if user exists
     let user = await User.findOne({ email: email});
     if (user) {
-      return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
+      return res.status(400).json({ errors: [{ msg: 'User: Already Exists' }] });
     }
 
     // Get users gravatar

@@ -80,13 +80,13 @@ router.get(
     try {
       const post = await Post.findById(req.params.id);
       if(!post) {
-        return res.status(404).json({ msg: 'Post not found' })
+        return res.status(404).json({ msg: 'Post: Not Found' })
       }
       res.json(post);
     } 
     catch (err) {
       if(err.kind === 'ObjectId') {
-        return res.status(404).json({ msg: 'Post not found' })
+        return res.status(404).json({ msg: 'Post: Not Found' })
       }
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -108,22 +108,22 @@ router.delete(
 
       if(!post) {
         console.error("!post");
-        return res.status(404).json({ msg: 'Post not found' })
+        return res.status(404).json({ msg: 'Post: Not Found' })
       }
 
       // Check User
       if(post.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: 'User Unauthorized' });
+        return res.status(401).json({ msg: 'User: Unauthorized' });
       }
 
       await post.deleteOne({ _id: req.params.id });
 
-      res.json({ msg: 'Post Removed' });
+      res.json({ msg: 'Post: Removed' });
     } 
     catch (err) {
       if(err.kind === 'ObjectId') {
         console.error("err.kind");
-        return res.status(404).json({ msg: 'Post not found' })
+        return res.status(404).json({ msg: 'Post: Not Found' })
       }
       console.error(err.message);
       res.status(500).send('Server Error');
@@ -145,12 +145,12 @@ router.put(
 
       if(!post) {
         console.error("!post");
-        return res.status(404).json({ msg: 'Post not found' })
+        return res.status(404).json({ msg: 'Post: Not Found' })
       }
 
       // Check if the post is already been liked
       if(post.likes.filter(like => like.user.toString() === req.user.id).length > 0) {
-        return res.status(400).json({ msg: 'Post already liked' });
+        return res.status(400).json({ msg: 'Post: Already Liked' });
       }
 
       post.likes.unshift({ user: req.user.id });
@@ -180,12 +180,12 @@ router.put(
 
       if(!post) {
         console.error("!post");
-        return res.status(404).json({ msg: 'Post not found' })
+        return res.status(404).json({ msg: 'Post: Not Found' })
       }
 
       // Check if the post is already been liked
       if(post.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
-        return res.status(400).json({ msg: 'Post has not yet been liked' });
+        return res.status(400).json({ msg: 'Post: Has not yet been liked' });
       }
 
       // Get remove index
@@ -194,7 +194,7 @@ router.put(
 
       await post.save();
       // res.json(post.likes);
-      res.json({ msg: 'Post Unliked' });
+      res.json({ msg: 'Post: Unliked' });
     } 
     catch (err) {
       console.error(err.message);
@@ -260,12 +260,12 @@ router.delete(
 
       // Make sure comment exists
       if(!comment) {
-        return res.status(404).json({ msg: 'Comment does not exists' });
+        return res.status(404).json({ msg: 'Comment: Does not Exists' });
       }
 
       // Check User
       if(comment.user.toString() !== req.user.id) {
-        return res.status(401).json({ msg: 'User Unauthorized' });
+        return res.status(401).json({ msg: 'User: Unauthorized' });
       }
 
       // Get remove index
@@ -274,7 +274,7 @@ router.delete(
 
       await post.save();
       // res.json(post.comments);
-      res.json({ msg: 'Comment Deleted' });
+      res.json({ msg: 'Comment: Deleted' });
     } 
     catch (err) {
       console.error(err.message);

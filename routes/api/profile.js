@@ -178,7 +178,7 @@ router.delete('/', auth, async (req, res) => {
       _id: req.user.id 
     });
 
-    res.json({ msg: 'User Removed' });
+    res.json({ msg: 'User: Removed' });
   } 
   catch (err) {
     console.error(err.message);
@@ -383,7 +383,7 @@ router.get(
           console.error(error);
         }
         if(response.statusCode !== 200) {
-          return res.status(404).json({ msg: 'No GitHub profile found' });
+          return res.status(404).json({ msg: 'GitHub Profile: Not Found' });
         }
         res.json(JSON.parse(body));
       })

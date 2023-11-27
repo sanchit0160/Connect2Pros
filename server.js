@@ -6,15 +6,7 @@ require('dotenv').config();
 const app = express();
 connectDB();
 
-// Init middleware
-const corsOptions = {
-  origin: 'http://localhost:3000', // Replace with the origin of your React app
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true, // Enable credentials (cookies, authorization headers, etc.)
-  optionsSuccessStatus: 204,
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json({ extended: false }));
 
 // Set up your routes
